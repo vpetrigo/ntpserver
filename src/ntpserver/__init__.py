@@ -296,13 +296,14 @@ class WorkThread(threading.Thread):
                 sendPacket.SetOriginTimeStamp(timeStamp_high, timeStamp_low)
                 sendPacket.recv_timestamp = recvTimestamp
                 sendPacket.tx_timestamp = system_to_ntp_time(time.time())
-                socket.sendto(sendPacket.to_data(), addr)
+                self.socket.sendto(sendPacket.to_data(), addr)
                 print("Sended to %s:%d" % (addr[0], addr[1]))
             except queue.Empty:
                 continue
 
 def main():
     global stopFlag
+    global sock
     listenIp = "0.0.0.0"
     listenPort = 1231
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

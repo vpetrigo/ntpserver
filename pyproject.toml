@@ -27,7 +27,7 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-server = "ntpserver:main"
+ntpserver = "ntpserver:main"
 
 [project.urls]
 Documentation = "https://github.com/vpetrigo/ntpserver#readme"

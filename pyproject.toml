@@ -38,6 +38,9 @@ extra-dependencies = [
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/ntpserver tests}"
 
+[tool.hatch.build]
+include = ["ntpserver.py"]
+
 [tool.coverage.run]
 source_pkgs = ["ntpserver", "tests"]
 branch = true

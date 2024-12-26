@@ -301,25 +301,26 @@ class WorkThread(threading.Thread):
             except queue.Empty:
                 continue
 
+def main():
+    global stopFlag
+    listenIp = "0.0.0.0"
+    listenPort = 1231
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.bind((listenIp, listenPort))
+    print("local socket: ", sock.getsockname())
+    recvThread = RecvThread(sock)
+    recvThread.start()
+    workThread = WorkThread(sock)
+    workThread.start()
 
-listenIp = "0.0.0.0"
-listenPort = 1231
-socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-socket.bind((listenIp, listenPort))
-print("local socket: ", socket.getsockname())
-recvThread = RecvThread(socket)
-recvThread.start()
-workThread = WorkThread(socket)
-workThread.start()
-
-while True:
-    try:
-        time.sleep(0.5)
-    except KeyboardInterrupt:
-        print("Exiting...")
-        stopFlag = True
-        recvThread.join()
-        workThread.join()
-        # socket.close()
-        print("Exited")
-        break
+    while True:
+        try:
+            time.sleep(0.5)
+        except KeyboardInterrupt:
+            print("Exiting...")
+            stopFlag = True
+            recvThread.join()
+            workThread.join()
+            # socket.close()
+            print("Exited")
+            break

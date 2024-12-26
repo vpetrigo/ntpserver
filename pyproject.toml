@@ -26,6 +26,9 @@ classifiers = [
 ]
 dependencies = []
 
+[project.scripts]
+server = "ntpserver:main"
+
 [project.urls]
 Documentation = "https://github.com/vpetrigo/ntpserver#readme"
 Issues = "https://github.com/vpetrigo/ntpserver/issues"
@@ -38,11 +41,8 @@ extra-dependencies = [
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/ntpserver tests}"
 
-[tool.hatch.build]
-include = ["ntpserver.py"]
-
-[tool.hatch.build.targets.app]
-scripts = ["ntpserver.py"]
+[tool.hatch.build.targets.wheel]
+packages = ["src/ntpserver"]
 
 [tool.coverage.run]
 source_pkgs = ["ntpserver", "tests"]

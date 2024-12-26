@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ntpserver"
-dynamic = ["version"]
+version = "0.0.1"
 description = 'A Python based NTP server'
 readme = "README.md"
 requires-python = ">=3.8"
@@ -30,9 +30,6 @@ dependencies = []
 Documentation = "https://github.com/vpetrigo/ntpserver#readme"
 Issues = "https://github.com/vpetrigo/ntpserver/issues"
 Source = "https://github.com/vpetrigo/ntpserver"
-
-[tool.hatch.version]
-path = "src/ntpserver/__about__.py"
 
 [tool.hatch.envs.types]
 extra-dependencies = [

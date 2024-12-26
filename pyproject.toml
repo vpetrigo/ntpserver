@@ -34,12 +34,19 @@ Documentation = "https://github.com/vpetrigo/ntpserver#readme"
 Issues = "https://github.com/vpetrigo/ntpserver/issues"
 Source = "https://github.com/vpetrigo/ntpserver"
 
+[tool.hatch.envs.default]
+type = "virtual"
+path = ".venv"
+installer = "uv"
+
+
 [tool.hatch.envs.types]
 extra-dependencies = [
   "mypy>=1.0.0",
 ]
+
 [tool.hatch.envs.types.scripts]
-check = "mypy --install-types --non-interactive {args:src/ntpserver tests}"
+check = "mypy --install-types --non-interactive {args:src/ntpserver}"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ntpserver"]

@@ -41,6 +41,9 @@ check = "mypy --install-types --non-interactive {args:src/ntpserver tests}"
 [tool.hatch.build]
 include = ["ntpserver.py"]
 
+[tool.hatch.build.targets.app]
+scripts = ["ntpserver.py"]
+
 [tool.coverage.run]
 source_pkgs = ["ntpserver", "tests"]
 branch = true
